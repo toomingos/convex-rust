@@ -207,14 +207,20 @@ const candidates = [
   "../../../target-e2e/wasm32-wasip1/release/bench_rust.wasm",
   "../../../target/wasm32-wasip1/release/bench_rust.wasm",
 ].map((p) => new URL(p, import.meta.url));
-const path = candidates.find((p) => existsSync(p));
+const CRYPTO_003 = "convex_run:bench_rust::crypto:crypto_003";
+// A grouped bench build (one feature group per Convex module) leaves only the last group's exports here.
+const path = candidates.find(
+  (p) =>
+    existsSync(p) &&
+    WebAssembly.Module.exports(new WebAssembly.Module(readFileSync(p))).some((e) => e.name === CRYPTO_003),
+);
 
 describe.skipIf(!path)("host crypto (bench guest)", () => {
   it("crypto-003 verifies 1000 RS256 tokens through WebCrypto", async () => {
     const module = new WebAssembly.Module(readFileSync(path!));
     const ctx: any = {};
     const t = performance.now();
-    const r: any = await runRust(ctx, module, "convex_run:bench_rust::crypto:crypto_003", {
+    const r: any = await runRust(ctx, module, CRYPTO_003, {
       seed: 1,
     });
     const ms = performance.now() - t;
