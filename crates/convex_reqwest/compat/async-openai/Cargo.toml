@@ -1,0 +1,21 @@
+[package]
+name = "compat_async_openai"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+convex_fn = { path = "../../../convex_fn" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+async-openai = "*"
+
+# Route every reqwest the crate pulls in to the Convex shim.
+[patch.crates-io]
+reqwest = { path = "../.." }
+
+# Standalone: not part of the convex-rs workspace.
+[workspace]

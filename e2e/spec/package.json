@@ -1,0 +1,11 @@
+{
+  "name": "convex-rs-e2e-spec",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 --test-timeout=1500000 test/"
+  },
+  "dependencies": {
+    "convex": "file:../../vendor/convex-backend/npm-packages/convex"
+  }
+}

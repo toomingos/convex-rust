@@ -1,0 +1,104 @@
+# Deploy Convex functions (TypeScript + Rust "use rust" actions) from GitHub Actions.
+# Copy to .github/workflows/convex-deploy.yml. See docs/rust/deploy-ci.md.
+#
+# Secrets (Settings > Secrets and variables > Actions):
+#   self-hosted backend:  CONVEX_SELF_HOSTED_URL, CONVEX_SELF_HOSTED_ADMIN_KEY
+#   or a deploy key:      CONVEX_DEPLOY_KEY      (set only one of the two groups)
+name: convex-deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: convex-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CARGO_TERM_COLOR: never
+      CARGO_INCREMENTAL: "0"
+      RUST_DIR: convex/rust
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # If convex_fn / the fork live in submodules (see the marked steps below).
+          submodules: recursive
+
+      # --- Node + dependencies -------------------------------------------------
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # The `convex` dependency must be the fork CLI (not published to npm yet).
+      # If package.json points at it with a file: path inside the checkout (for
+      # example a submodule), build its CLI bundle first. Delete this step once
+      # the fork package is installable from a registry or a tarball.
+      # - name: Build fork convex CLI
+      #   working-directory: vendor/convex-backend/npm-packages/convex
+      #   run: |
+      #     npm ci
+      #     node scripts/build.cjs standalone-cli tempDir=dist
+      - run: npm ci
+
+      # --- Rust toolchain pinned by convex/rust/rust-toolchain.toml ------------
+      # `convex_fn` is referenced by a relative path in convex/rust/Cargo.toml; it
+      # must exist on the runner (submodule above, or a second checkout here).
+      # - uses: actions/checkout@v4
+      #   with:
+      #     repository: <owner>/convex-rs
+      #     path: vendor/convex-rs
+      - name: Install pinned Rust toolchain and wasm32-wasip1 target
+        run: |
+          CHANNEL=$(sed -n 's/^channel *= *"\(.*\)"/\1/p' "$RUST_DIR/rust-toolchain.toml")
+          echo "Rust channel: $CHANNEL"
+          rustup toolchain install "$CHANNEL" --profile minimal --target wasm32-wasip1
+          echo "RUST_CHANNEL=$CHANNEL" >> "$GITHUB_ENV"
+
+      - name: Cache cargo registry and build output
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+            ~/.cargo/git/db
+            ${{ env.RUST_DIR }}/target
+          key: cargo-${{ runner.os }}-${{ env.RUST_CHANNEL }}-${{ hashFiles('convex/rust/Cargo.lock') }}
+          restore-keys: |
+            cargo-${{ runner.os }}-${{ env.RUST_CHANNEL }}-
+
+      # wasm-opt shrinks the release wasm; `npx convex deploy` uses it when it is
+      # on PATH and silently skips it otherwise.
+      - name: Install binaryen (wasm-opt)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binaryen
+          wasm-opt --version
+
+      # --- Tests (host target; the crate's default target is wasm) -------------
+      - name: cargo test
+        working-directory: ${{ env.RUST_DIR }}
+        run: |
+          cargo test --target "$(rustc -vV | sed -n 's/host: //p')"
+
+      # --- Deploy ---------------------------------------------------------------
+      - name: Deploy
+        env:
+          SELF_HOSTED_URL: ${{ secrets.CONVEX_SELF_HOSTED_URL }}
+          SELF_HOSTED_ADMIN_KEY: ${{ secrets.CONVEX_SELF_HOSTED_ADMIN_KEY }}
+          DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+        run: |
+          # Export only one credential kind: use the deploy key if set, otherwise the
+          # self-hosted URL + admin key.
+          if [ -n "$DEPLOY_KEY" ]; then
+            export CONVEX_DEPLOY_KEY="$DEPLOY_KEY"
+          else
+            export CONVEX_SELF_HOSTED_URL="$SELF_HOSTED_URL"
+            export CONVEX_SELF_HOSTED_ADMIN_KEY="$SELF_HOSTED_ADMIN_KEY"
+          fi
+          npx convex deploy

@@ -1,0 +1,68 @@
+{
+  "name": "convex-rust",
+  "version": "0.1.0",
+  "description": "\"use rust\" for stock Convex: write Convex actions in Rust, compiled to wasm and hosted inside a normal Convex action (cloud or self-hosted).",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomingos/convex-rust.git",
+    "directory": "packages/convex-rust"
+  },
+  "homepage": "https://github.com/toomingos/convex-rust/tree/main/packages/convex-rust#readme",
+  "bugs": {
+    "url": "https://github.com/toomingos/convex-rust/issues"
+  },
+  "keywords": [
+    "convex",
+    "rust",
+    "wasm",
+    "webassembly",
+    "wasi",
+    "actions"
+  ],
+  "type": "module",
+  "bin": {
+    "convex-rust": "./dist/cli/bin.js"
+  },
+  "exports": {
+    "./runtime": {
+      "types": "./dist/runtime/index.d.ts",
+      "import": "./dist/runtime/index.js",
+      "default": "./dist/runtime/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "rust",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepare": "node -e \"require('fs').existsSync('tsconfig.build.json')&&require('child_process').execSync('npm run build',{stdio:'inherit'})\"",
+    "vendor-crates": "node scripts/vendor-crates.mjs",
+    "prepack": "npm run vendor-crates && npm run build"
+  },
+  "peerDependencies": {
+    "convex": ">=1.17.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "convex": "^1.27.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.3"
+  },
+  "dependencies": {
+    "esbuild": ">=0.19.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Tomás Domingos <toomingos@gmail.com>"
+}

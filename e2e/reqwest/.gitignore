@@ -1,0 +1,5 @@
+node_modules
+convex/rust/target
+convex/_generated
+.env.local
+.backend-data

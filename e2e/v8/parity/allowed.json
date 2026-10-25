@@ -1,0 +1,13 @@
+{
+  "_comment": "rust-v8 vs node, spec parity. At most 2 allowed differences; both share ONE root cause (see README 'Env vars'). The third test with the same cause (DX-05 probe, whose env assertion fails first) is deliberately NOT allowed so its log-line assertions stay visible: it is reported FAIL.",
+  "allowed": [
+    {
+      "match": "deployment env vars (convex env set) are visible in both runtimes",
+      "reason": "Inherent to the default Convex runtime: process.env is a Proxy with only a `get` trap (udf-runtime 00_misc.ts), so Object.entries(process.env) is empty and the host cannot populate WASI environ_get; std::env::var in the guest sees nothing. Needs an explicit name list in the host."
+    },
+    {
+      "match": "updated var is seen by the next call",
+      "reason": "Same root cause as above (guest cannot enumerate deployment env vars through process.env in the default runtime)."
+    }
+  ]
+}

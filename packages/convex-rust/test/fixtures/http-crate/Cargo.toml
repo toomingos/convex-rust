@@ -1,0 +1,23 @@
+[package]
+name = "http_fixture"
+edition = "2021"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+convex_fn = { path = "../../../../../crates/convex_fn" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Standalone: not part of the convex-rs workspace. Rebuild http-guest.wasm with build-http-guest.sh.
+[workspace]
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

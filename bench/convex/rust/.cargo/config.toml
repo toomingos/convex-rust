@@ -1,0 +1,11 @@
+# Managed by `npx convex`: edit with care, the block below is regenerated.
+# The paths below point at the in-repo reqwest shim (crates/convex_reqwest). A `convex` CLI from the
+# Convex backend fork (github.com/toomingos/convex-backend, branch rust-native-runtime; set CONVEX_BACKEND_DIR
+# when building from a clone) rewrites this block to its bundled copy of the same shim on `npx convex dev`.
+[build]
+target = "wasm32-wasip1"
+
+# >>> convex-managed:patch (begin)
+[patch.crates-io]
+reqwest = { path = "../../../crates/convex_reqwest" }
+# <<< convex-managed:patch (end)

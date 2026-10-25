@@ -1,0 +1,8 @@
+{
+  "name": "convex-rs-e2e-deploy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node run.mjs"
+  }
+}

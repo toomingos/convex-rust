@@ -1,0 +1,16 @@
+[package]
+name = "bench_runner"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+publish = false
+description = "Phase-0 benchmark runner: Node in-process vs wasmtime"
+
+[dependencies]
+convex_fn_test.workspace = true
+serde_json.workspace = true
+wasmtime = { version = "50.0.0", default-features = false, features = ["cranelift", "runtime", "std", "parallel-compilation"] }
+wasmtime-wasi = { version = "50.0.0", default-features = false, features = ["p1"] }
+wasmparser = { version = "0.261", default-features = false, features = ["std"] }
+ureq = { version = "2", default-features = false, features = ["tls"] }
+libc = "0.2"

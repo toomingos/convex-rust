@@ -1,0 +1,66 @@
+[package]
+name = "bench_rust"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+convex_fn.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+md-5 = { version = "0.11" }
+crc32fast = { version = "1" }
+blake3 = { version = "1", default-features = false }
+regex = { version = "1" }
+base64.workspace = true
+flate2 = { version = "1" }
+ruzstd = { version = "0.8" }
+argon2 = { version = "0.5" }
+bcrypt = { version = "0.17", default-features = false, features = ["std"] }
+uuid = { version = "1", default-features = false }
+hex = { version = "0.4" }
+csv = { version = "1" }
+pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
+ammonia = { version = "4" }
+chrono = { version = "0.4", default-features = false, features = ["std"] }
+chrono-tz = { version = "0.10" }
+unicode-normalization = { version = "0.1" }
+unicode-segmentation = { version = "1" }
+similar = { version = "2" }
+handlebars = { version = "5" }
+validator = { version = "0.20", features = ["derive"] }
+serde_yaml = { version = "0.9" }
+roxmltree = { version = "0.21" }
+url = { version = "2" }
+strsim = { version = "0.11" }
+slug = { version = "0.1" }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg"] }
+image-webp = { version = "0.2" }
+libblur = { version = "0.24", default-features = false, features = ["neon", "rdm", "sse", "avx"] }
+fast_image_resize = { version = "6", default-features = false }
+qrcode = { version = "0.14", default-features = false }
+resvg = { version = "0.48", default-features = false }
+lopdf = { version = "0.46", default-features = false }
+kamadak-exif = { version = "0.6" }
+rubato = { version = "5" }
+audioadapter-buffers = { version = "5" }
+
+# wasm32: no in-guest crypto (sha2/hmac/aes-gcm/ed25519/RustCrypto jwt); convex_fn::crypto runs it on the host.
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+jsonwebtoken = { version = "10", default-features = false, features = ["use_pem"] }
+signature = { version = "2" }
+blake3 = { version = "1", default-features = false, features = ["pure"] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+sha2 = { version = "0.11" }
+hmac = { version = "0.13" }
+aes-gcm = { version = "0.11" }
+ed25519-dalek = { version = "2" }
+jsonwebtoken = { version = "10", default-features = false, features = ["aws_lc_rs", "use_pem"] }
+
+[dev-dependencies]
+convex_fn_test.workspace = true

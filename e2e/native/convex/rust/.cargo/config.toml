@@ -1,0 +1,6 @@
+# Managed by `npx convex`: edit with care, the block below is regenerated.
+
+# >>> convex-managed:patch (begin)
+# Nothing to patch: no dependency uses reqwest. When one is added (cargo add reqwest),
+# the next `npx convex dev` fills in the built-in reqwest replacement here.
+# <<< convex-managed:patch (end)

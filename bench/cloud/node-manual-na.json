@@ -1,0 +1,6 @@
+{
+ "data-008": "Node.js action exceeds the 512 MB cloud memory limit (OOM)",
+ "mem-001": "Node.js action exceeds the 512 MB cloud memory limit (OOM)",
+ "mem-002": "Node.js action intermittently exceeds the 512 MB cloud memory limit (passed once, OOM on rerun)",
+ "mem-004": "Node.js action intermittently exceeds the 512 MB cloud memory limit (passed once, OOM on rerun)"
+}

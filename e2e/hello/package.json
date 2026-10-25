@@ -1,0 +1,8 @@
+{
+  "name": "convex-rs-e2e-hello",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "convex": "file:../../vendor/convex-backend/npm-packages/convex"
+  }
+}

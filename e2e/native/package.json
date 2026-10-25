@@ -1,0 +1,11 @@
+{
+  "name": "convex-rs-e2e-native",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node run.mjs"
+  },
+  "dependencies": {
+    "convex": "file:../../vendor/convex-backend/npm-packages/convex"
+  }
+}

@@ -1,0 +1,5 @@
+.backend-data/
+.env.local
+node_modules/
+convex/.build-info.json
+convex/.build-info-native.json

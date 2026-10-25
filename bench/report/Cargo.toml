@@ -1,0 +1,23 @@
+[package]
+name = "bench_report"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+publish = false
+description = "Benchmark report generator: bootstrap CIs, markdown + HTML + summary.json"
+
+[lib]
+name = "bench_report"
+path = "src/lib.rs"
+
+[[bin]]
+name = "bench_report"
+path = "src/main.rs"
+
+[[bin]]
+name = "bench_report_fixture"
+path = "src/bin/fixture.rs"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true

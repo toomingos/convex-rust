@@ -1,0 +1,19 @@
+[package]
+name = "reqwest_rust"
+edition = "2021"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+convex_fn = { path = "../../../../crates/convex_fn" }
+# The real crate: the Convex CLI's managed [patch.crates-io] swaps in the shim.
+reqwest = { version = "0.12", default-features = false, features = ["json", "stream"] }
+futures-util = { version = "0.3", default-features = false }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Standalone: not part of the convex-rs workspace.
+[workspace]

@@ -1,0 +1,13 @@
+{
+  "_comment": "Allowed native-vs-wasm differences for spec parity (target 45/47). DESIGN 8.2 gives the target but does not name the two tests, so these are PROVISIONAL, chosen from the documented differences. Replace them with the real two once the first full native run shows which fail. A test listed here that FAILS is reported ALLOWED-DIFF; one that passes is just PASS.",
+  "allowed": [
+    {
+      "match": "DX-05 logging, env, clock, random",
+      "reason": "NATIVE.md 2.3 / DESIGN 2.3: guest print!/eprint! travel on pipes (stdout/stderr) while ctx/log lines travel as Log frames, so relative order and the exact [LOG]/[WARN] level mapping of stdio lines is not guaranteed."
+    },
+    {
+      "match": "a Rust module inside a component is rejected on push",
+      "reason": "DESIGN 6: components are rejected by rejectRustInComponent in both runtimes, but with --rust-runtime native the CLI runs the native build/backend query before the component check, so the message can differ (error text, not behaviour)."
+    }
+  ]
+}

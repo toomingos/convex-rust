@@ -1,0 +1,25 @@
+[package]
+name = "c_deps_fixture"
+edition = "2021"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+# One feature per C-wrapping crate, so each can be tried on its own.
+zstd = ["dep:zstd"]
+sqlite = ["dep:rusqlite"]
+ring = ["dep:ring"]
+
+[dependencies]
+# The path is rewritten by the test (it builds a copy in a temp dir).
+convex_fn = { path = "CONVEX_FN_PATH" }
+serde = { version = "1", features = ["derive"] }
+zstd = { version = "0.13", optional = true }
+rusqlite = { version = "0.32", features = ["bundled"], optional = true }
+ring = { version = "0.17", optional = true }
+
+# Standalone: not part of the convex-rs workspace.
+[workspace]

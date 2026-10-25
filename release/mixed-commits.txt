@@ -1,0 +1,6 @@
+# Fork commits that are listed in native-commits.txt (so they are reverted for the wasm tree) but whose
+# change is also wasm-relevant (shared code: rust_analyze.rs, CLI codegen). make-patches.sh re-applies them
+# on the wasm tree after the reverts, oldest first: only their shared (non-native) files, 3-way; see the script. Format: <sha> <subject>.
+9817553 clippy clean — its core.rs/backend.rs collapsible-if hunks are shared wasmtime host; 5e3a8b0 is written on top of them
+5e3a8b0 rust host hardening (sync_reply alloc failure, host crypto cap, ConvexError(null), level-4 marker, manifest kind field) — shared wasmtime host + analyzer; ffa6f94 builds on its ManifestEntry.kind
+ffa6f94 HTTP actions on fork runtimes: kind:"http" manifest entries register as internal actions + CLI _generated/rustHttp

@@ -1,0 +1,8 @@
+{
+  "name": "convex-rs-e2e-spec-component-app",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "convex": "file:../../../vendor/convex-backend/npm-packages/convex"
+  }
+}

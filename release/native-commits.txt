@@ -1,0 +1,29 @@
+# Fork commits that are native-worker work (D-102). make-patches.sh reverts exactly these, newest first,
+# on a scratch copy of use-rust to get the wasm-only tree. Format: <sha> <subject>.
+# Everything else in 342530f..use-rust is the wasm runtime / CLI.
+27ee2ec WN-00 rust/native skeleton
+7b51be9 WN-03 native IPC protocol
+27abf16 WN-09 CLI native module
+6a5c5ad WN-07 worker entry arg, /api/rust_native/info
+f9d5f72 WN-10 --rust-runtime flag, convex.json rust.runtime, native build + carrier push
+a1cb882 WN-08 push-time validation of native carrier modules
+c16289d WN-05 native host pool, pump, metrics
+221b853 WN-04 native worker process + sandbox
+3c119a9 L1-LX native sandbox fixes
+90b0ad3 WN-06a native artifact store + worker handle
+a2106a8 CLI preview deploy setRustBackend
+d5ba6a1 CLI Mach-O manifest reader fix
+55ce3ce WN-06b native runtime wiring
+479a24f native runaway-thread recycle
+34aabeb native: posix_spawn workers with in-worker sandbox before dlopen (L2-03); parallel spawns, larger idle pool, prewarm, lean call path, sampled RSS probe, runtime phase (L2-04/06/10)
+99ba88c rust: guest sleeps timed in ActionBackend (no 5 ms setTimeout-order re-poll chain; mem-003 36→8 ms) (L2-08); CLI: aes_armv8/polyval_armv8 cfg on aarch64 native builds (L2-12)
+9817553 rust: clippy clean (collapsible-if ×10, sandbox doc list, needless mut/allow), stale pre_exec comments (L2-R)
+bf92e46 CLI: wasm32 builds with +simd128 (kept with native: depends on WN-10 CLI lines; split before upstreaming)
+52d1d67 rust: coalesce StreamExtend chunks ≤1 MiB and queue all ready events; binary chunk events for guests exporting convex_binary_events (old guests keep JSON base64); native proto v2 frame 0x0C Chunk, batched Poll, 25 µs spin before park (L3-02/06) — net-002 3.7→2.1× node, net-006 2.4→1.5×, cb-013 1.47→1.10×
+81f8209 rust native: 1 MiB socket buffers, frame decoder reserves full frame, envelope {"ok":..} sliced without RawValue copy (GuestResult::OkText) (L3-07) — ser-004 guest-side 33→13 ms, ser-006 7.8→5.4 ms (debug)
+742349b rust native: idle trim (optional guest convex_native_trim export, called after >=100 ms idle via socket poll when the call peaked >=8 MiB) + idle RSS backstop recycle (RUST_NATIVE_IDLE_RECYCLE_RSS_BYTES, default 24 MiB, keeps one idle worker per key) — idle_rss gate FAIL→PASS 17.3 MB (L4-04)
+b101bd1 rust native: refuse sandbox level off without RUST_NATIVE_ALLOW_UNSANDBOXED=true, protections report in info + startup warning, per-worker 0700 scratch dirs (swept at startup), RLIMIT_CPU/NPROC without cgroup, root-without-uid-drop warning, pump host ops bounded by the call deadline, sorted env_hash, RSS sampling outside the pool lock, gc keeps in-flight artifacts, 100 ms idle watchdog, le
+5e3a8b0 rust host: sync_reply fails cleanly on guest allocation failure, host crypto input cap (32 MiB) + block_in_place over 1 MiB, ConvexError(null) keeps its data, level-4 panic marker not logged, manifest kind:"http" entries skipped with a warning instead of registered as actions (N-C1, N-C2, CF1 follow-ups)
+ffa6f94 rust: HTTP actions on fork runtimes — kind:"http" manifest entries registered as internal actions + CLI _generated/rustHttp helper (rustHttpAction, buffered) (F-03; mixed: also used by the fork wasmtime runtime)
+a5d46a5 rust native sandbox: Linux build fix (mut notes, unsafe blocks around add_ro_path_raw) (F-06)
+a5a2231 rust_analyze: analyze_rust_module test-only on the native tree (wasm tree still calls it from analyze_rust_modules)

@@ -1,0 +1,76 @@
+[package]
+# Named `reqwest` so `[patch.crates-io] reqwest = { path = ... }` swaps it in.
+# The version only has to satisfy the `0.12` requirement of vendor crates.
+name = "reqwest"
+version = "0.12.99"
+edition = "2021"
+license = "Apache-2.0"
+description = "reqwest-compatible HTTP client for \"use rust\" actions, backed by the Convex fetch task (DX-06 / D-010)"
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+convex_fn = { path = "../convex_fn", features = ["tokio-rt"] }
+bytes = "1"
+http = "1"
+http-body = "1"
+url = "2"
+serde = "1"
+serde_json = "1"
+serde_urlencoded = "0.7"
+futures-core = { version = "0.3", default-features = false }
+futures-util = { version = "0.3", default-features = false }
+base64 = "0.22"
+tokio = { version = "1", default-features = false, features = ["rt", "time"] }
+
+[dev-dependencies]
+convex_fn_test = { path = "../convex_fn_test" }
+serde = { version = "1", features = ["derive"] }
+futures-util = { version = "0.3", default-features = false }
+tokio = { version = "1", default-features = false, features = ["rt", "time", "macros"] }
+
+# reqwest's feature names, all no-ops: TLS, compression, proxies, cookies and
+# DNS are handled by the Convex host's FetchClient, not the guest.
+[features]
+default = ["default-tls", "charset", "http2", "macos-system-configuration"]
+default-tls = []
+native-tls = []
+native-tls-vendored = []
+native-tls-alpn = []
+rustls-tls = []
+rustls-tls-no-provider = []
+rustls-tls-manual-roots = []
+rustls-tls-manual-roots-no-provider = []
+rustls-tls-webpki-roots = []
+rustls-tls-webpki-roots-no-provider = []
+rustls-tls-native-roots = []
+rustls-tls-native-roots-no-provider = []
+blocking = []
+json = []
+multipart = []
+stream = []
+query = []
+form = []
+gzip = []
+brotli = []
+zstd = []
+deflate = []
+cookies = []
+socks = []
+hickory-dns = []
+trust-dns = []
+http2 = []
+http3 = []
+charset = []
+macos-system-configuration = []
+system-proxy = []
+native-roots = []
+webpki-roots = []
+# reqwest 0.13 names
+rustls = []
+rustls-no-provider = []
+rustls-native-roots = []
+rustls-webpki-roots = []
+native-tls-no-alpn = []

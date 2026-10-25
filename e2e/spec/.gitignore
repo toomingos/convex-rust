@@ -1,0 +1,5 @@
+node_modules
+.backend-data
+_generated
+target
+.env.local

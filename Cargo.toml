@@ -1,0 +1,38 @@
+[workspace]
+resolver = "2"
+# Same source as crates/convex_reqwest, versioned for the reqwest 0.13 line.
+exclude = ["crates/convex_reqwest/v0_13"]
+members = [
+  "crates/convex_fn",
+  "crates/convex_fn_macros",
+  "crates/convex_fn_test",
+  "crates/convex_reqwest",
+  "crates/convex_aws",
+  "bench/convex/rust",
+  "bench/runner",
+  "bench/report",
+]
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/toomingos/convex-rust"
+version = "0.1.0"
+
+[workspace.dependencies]
+convex_fn = { path = "crates/convex_fn" }
+convex_fn_macros = { path = "crates/convex_fn_macros" }
+convex_fn_test = { path = "crates/convex_fn_test" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }
+base64 = "0.22"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+debug = false
+
+[profile.dev]
+debug = 0

@@ -1,0 +1,9 @@
+{
+  "name": "convex-rs-e2e-v8",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "convex": "1.48.0",
+    "convex-rust": "file:../../packages/convex-rust"
+  }
+}

@@ -1,0 +1,22 @@
+[package]
+name = "convex_fn_test"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+description = "In-process mock Convex host for unit-testing convex_fn actions with cargo test"
+
+[dependencies]
+convex_fn.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+base64.workspace = true
+
+[dev-dependencies]
+log = "0.4"
+tracing = "0.1"
+
+[features]
+# Pass-throughs so the test suites can run against each convex_fn feature.
+tokio-rt = ["convex_fn/tokio-rt"]
+log = ["convex_fn/log"]
+tracing = ["convex_fn/tracing"]

@@ -1,0 +1,1847 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "base-001",
+      "category": "base",
+      "title": "noop",
+      "compare": "exact",
+      "node": {
+        "path": "node/base:base_001",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/base:base_001",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "base-002",
+      "category": "base",
+      "title": "echo small args (1 field)",
+      "compare": "exact",
+      "node": {
+        "path": "node/base:base_002",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/base:base_002",
+        "lib": null
+      },
+      "args": {
+        "seed": 1,
+        "msg": "hello"
+      },
+      "phase0": true
+    },
+    {
+      "id": "base-003",
+      "category": "base",
+      "title": "return 1 MB value",
+      "compare": "exact",
+      "node": {
+        "path": "node/base:base_003",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/base:base_003",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "base-004",
+      "category": "base",
+      "title": "throw ConvexError with data",
+      "compare": "exact",
+      "node": {
+        "path": "node/base:base_004",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/base:base_004",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "base-005",
+      "category": "base",
+      "title": "100 × console.log / log!",
+      "compare": "ignore",
+      "node": {
+        "path": "node/base:base_005",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/base:base_005",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cb-001",
+      "category": "cb",
+      "title": "runQuery ×1",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_001",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_001",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-002",
+      "category": "cb",
+      "title": "runQuery ×10 sequential",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_002",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_002",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-003",
+      "category": "cb",
+      "title": "runQuery ×10 parallel",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_003",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_003",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-004",
+      "category": "cb",
+      "title": "runQuery ×100 sequential",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_004",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_004",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-005",
+      "category": "cb",
+      "title": "runQuery ×100 parallel",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_005",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_005",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-006",
+      "category": "cb",
+      "title": "runMutation ×1",
+      "compare": "shape",
+      "node": {
+        "path": "node/cb:cb_006",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_006",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-007",
+      "category": "cb",
+      "title": "runMutation ×10 sequential",
+      "compare": "shape",
+      "node": {
+        "path": "node/cb:cb_007",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_007",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-008",
+      "category": "cb",
+      "title": "runAction cross-runtime (Node↔isolate, Rust↔isolate)",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_008",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_008",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-009",
+      "category": "cb",
+      "title": "runAction chain of 3",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_009",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_009",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-010",
+      "category": "cb",
+      "title": "scheduler.runAfter(0) ×1",
+      "compare": "shape",
+      "node": {
+        "path": "node/cb:cb_010",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_010",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-011",
+      "category": "cb",
+      "title": "scheduler.runAt ×10",
+      "compare": "shape",
+      "node": {
+        "path": "node/cb:cb_011",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_011",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-012",
+      "category": "cb",
+      "title": "storage.store 1 MB blob",
+      "compare": "shape",
+      "node": {
+        "path": "node/cb:cb_012",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_012",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-013",
+      "category": "cb",
+      "title": "storage.get 1 MB blob",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_013",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_013",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-014",
+      "category": "cb",
+      "title": "auth.getUserIdentity",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_014",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_014",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "cb-015",
+      "category": "cb",
+      "title": "read 10 env vars",
+      "compare": "exact",
+      "node": {
+        "path": "node/cb:cb_015",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cb:cb_015",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "ser-001",
+      "category": "ser",
+      "title": "args 1 KB object",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_001",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_001",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "object",
+        "bytes": 1024
+      }
+    },
+    {
+      "id": "ser-002",
+      "category": "ser",
+      "title": "args 100 KB object",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_002",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_002",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "object",
+        "bytes": 102400
+      }
+    },
+    {
+      "id": "ser-003",
+      "category": "ser",
+      "title": "args 1 MB object",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_003",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_003",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "object",
+        "bytes": 1048576
+      }
+    },
+    {
+      "id": "ser-004",
+      "category": "ser",
+      "title": "args 5 MB object",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_004",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_004",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "object",
+        "bytes": 5242880
+      }
+    },
+    {
+      "id": "ser-005",
+      "category": "ser",
+      "title": "14-level nested object",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_005",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_005",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "nested",
+        "depth": 14
+      }
+    },
+    {
+      "id": "ser-006",
+      "category": "ser",
+      "title": "array of 8k objects",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_006",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_006",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "array_of_objects",
+        "count": 8000
+      }
+    },
+    {
+      "id": "ser-007",
+      "category": "ser",
+      "title": "bytes 1 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_007",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_007",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "bytes",
+        "bytes": 1048576
+      }
+    },
+    {
+      "id": "ser-008",
+      "category": "ser",
+      "title": "int64 / bigint values",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_008",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_008",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "int64"
+      }
+    },
+    {
+      "id": "ser-009",
+      "category": "ser",
+      "title": "float specials (NaN, ±Inf, -0)",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_009",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_009",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "float_specials"
+      }
+    },
+    {
+      "id": "ser-010",
+      "category": "ser",
+      "title": "Unicode-heavy strings (emoji, CJK, RTL)",
+      "compare": "exact",
+      "node": {
+        "path": "node/ser:ser_010",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/ser:ser_010",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "argsGen": {
+        "kind": "unicode"
+      }
+    },
+    {
+      "id": "cpu-001",
+      "category": "cpu",
+      "title": "sha256 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_001",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_001",
+        "lib": "sha2"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-002",
+      "category": "cpu",
+      "title": "sha512 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_002",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_002",
+        "lib": "sha2"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-003",
+      "category": "cpu",
+      "title": "blake3 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_003",
+        "lib": "@noble/hashes"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_003",
+        "lib": "blake3"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-004",
+      "category": "cpu",
+      "title": "md5 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_004",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_004",
+        "lib": "md-5"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-005",
+      "category": "cpu",
+      "title": "crc32 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_005",
+        "lib": "node:zlib"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_005",
+        "lib": "crc32fast"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-006",
+      "category": "cpu",
+      "title": "recursive fib(30)",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_006",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_006",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-007",
+      "category": "cpu",
+      "title": "prime sieve to 10M",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_007",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_007",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-008",
+      "category": "cpu",
+      "title": "sort 1M ints",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_008",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_008",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-009",
+      "category": "cpu",
+      "title": "sort 100k strings",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_009",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_009",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-010",
+      "category": "cpu",
+      "title": "matrix multiply 256×256 f64",
+      "compare": "approx",
+      "node": {
+        "path": "node/cpu:cpu_010",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_010",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "tolerance": 1e-09
+    },
+    {
+      "id": "cpu-011",
+      "category": "cpu",
+      "title": "n-body, 1000 steps",
+      "compare": "approx",
+      "node": {
+        "path": "node/cpu:cpu_011",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_011",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "tolerance": 1e-09
+    },
+    {
+      "id": "cpu-012",
+      "category": "cpu",
+      "title": "mandelbrot 1000×1000",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_012",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_012",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-013",
+      "category": "cpu",
+      "title": "regex scan over 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_013",
+        "lib": "RegExp"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_013",
+        "lib": "regex"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-014",
+      "category": "cpu",
+      "title": "JSON parse 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_014",
+        "lib": "JSON"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_014",
+        "lib": "serde_json"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-015",
+      "category": "cpu",
+      "title": "JSON stringify 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_015",
+        "lib": "JSON"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_015",
+        "lib": "serde_json"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-016",
+      "category": "cpu",
+      "title": "base64 encode 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_016",
+        "lib": "Buffer"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_016",
+        "lib": "base64"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-017",
+      "category": "cpu",
+      "title": "base64 decode 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_017",
+        "lib": "Buffer"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_017",
+        "lib": "base64"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-018",
+      "category": "cpu",
+      "title": "gzip compress 10 MB",
+      "compare": "shape",
+      "node": {
+        "path": "node/cpu:cpu_018",
+        "lib": "node:zlib"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_018",
+        "lib": "flate2"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-019",
+      "category": "cpu",
+      "title": "zstd compress 10 MB",
+      "compare": "shape",
+      "node": {
+        "path": "node/cpu:cpu_019",
+        "lib": "@mongodb-js/zstd"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_019",
+        "lib": "zstd"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "cpu-020",
+      "category": "cpu",
+      "title": "Levenshtein, 1k string pairs",
+      "compare": "exact",
+      "node": {
+        "path": "node/cpu:cpu_020",
+        "lib": "fastest-levenshtein"
+      },
+      "rust": {
+        "path": "rust/cpu:cpu_020",
+        "lib": "hand-written Myers bit-parallel"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-001",
+      "category": "data",
+      "title": "CSV parse 100k rows",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_001",
+        "lib": "csv-parse"
+      },
+      "rust": {
+        "path": "rust/data:data_001",
+        "lib": "csv"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-002",
+      "category": "data",
+      "title": "CSV write 100k rows",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_002",
+        "lib": "csv-stringify"
+      },
+      "rust": {
+        "path": "rust/data:data_002",
+        "lib": "csv"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-003",
+      "category": "data",
+      "title": "Markdown → HTML 1 MB",
+      "compare": "shape",
+      "node": {
+        "path": "node/data:data_003",
+        "lib": "marked"
+      },
+      "rust": {
+        "path": "rust/data:data_003",
+        "lib": "pulldown-cmark"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-004",
+      "category": "data",
+      "title": "HTML sanitize 1 MB",
+      "compare": "shape",
+      "node": {
+        "path": "node/data:data_004",
+        "lib": "sanitize-html"
+      },
+      "rust": {
+        "path": "rust/data:data_004",
+        "lib": "ammonia"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-005",
+      "category": "data",
+      "title": "date parse 100k ISO strings",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_005",
+        "lib": "Date"
+      },
+      "rust": {
+        "path": "rust/data:data_005",
+        "lib": "chrono"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-006",
+      "category": "data",
+      "title": "timezone convert 100k",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_006",
+        "lib": "Intl"
+      },
+      "rust": {
+        "path": "rust/data:data_006",
+        "lib": "chrono-tz"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-007",
+      "category": "data",
+      "title": "Unicode NFC normalize 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_007",
+        "lib": "String.normalize"
+      },
+      "rust": {
+        "path": "rust/data:data_007",
+        "lib": "unicode-normalization"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-008",
+      "category": "data",
+      "title": "word tokenize and count 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_008",
+        "lib": "Intl.Segmenter"
+      },
+      "rust": {
+        "path": "rust/data:data_008",
+        "lib": "unicode-segmentation"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-009",
+      "category": "data",
+      "title": "line diff of 100 KB texts",
+      "compare": "shape",
+      "node": {
+        "path": "node/data:data_009",
+        "lib": "diff"
+      },
+      "rust": {
+        "path": "rust/data:data_009",
+        "lib": "similar"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-010",
+      "category": "data",
+      "title": "template render ×10k",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_010",
+        "lib": "handlebars"
+      },
+      "rust": {
+        "path": "rust/data:data_010",
+        "lib": "handlebars"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-011",
+      "category": "data",
+      "title": "schema validate 10k objects",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_011",
+        "lib": "zod"
+      },
+      "rust": {
+        "path": "rust/data:data_011",
+        "lib": "serde + validator"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-012",
+      "category": "data",
+      "title": "YAML parse 1 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_012",
+        "lib": "yaml"
+      },
+      "rust": {
+        "path": "rust/data:data_012",
+        "lib": "serde_yaml"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-013",
+      "category": "data",
+      "title": "XML parse 5 MB",
+      "compare": "shape",
+      "node": {
+        "path": "node/data:data_013",
+        "lib": "fast-xml-parser"
+      },
+      "rust": {
+        "path": "rust/data:data_013",
+        "lib": "roxmltree"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-014",
+      "category": "data",
+      "title": "URL parse 100k",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_014",
+        "lib": "URL"
+      },
+      "rust": {
+        "path": "rust/data:data_014",
+        "lib": "url"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "data-015",
+      "category": "data",
+      "title": "slugify 100k strings",
+      "compare": "exact",
+      "node": {
+        "path": "node/data:data_015",
+        "lib": "slugify"
+      },
+      "rust": {
+        "path": "rust/data:data_015",
+        "lib": "slug"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-001",
+      "category": "crypto",
+      "title": "HMAC-SHA256 ×100k",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_001",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_001",
+        "lib": "hmac+sha2"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-002",
+      "category": "crypto",
+      "title": "JWT sign HS256 ×10k",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_002",
+        "lib": "jose"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_002",
+        "lib": "jsonwebtoken"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-003",
+      "category": "crypto",
+      "title": "JWT verify RS256 ×1k",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_003",
+        "lib": "jose"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_003",
+        "lib": "jsonwebtoken"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-004",
+      "category": "crypto",
+      "title": "AES-256-GCM encrypt 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_004",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_004",
+        "lib": "aes-gcm"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-005",
+      "category": "crypto",
+      "title": "AES-256-GCM decrypt 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_005",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_005",
+        "lib": "aes-gcm"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-006",
+      "category": "crypto",
+      "title": "Ed25519 sign ×10k",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_006",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_006",
+        "lib": "ed25519-dalek"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-007",
+      "category": "crypto",
+      "title": "Ed25519 verify ×10k",
+      "compare": "exact",
+      "node": {
+        "path": "node/crypto:crypto_007",
+        "lib": "node:crypto"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_007",
+        "lib": "ed25519-dalek"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-008",
+      "category": "crypto",
+      "title": "argon2id hash (m=19MiB, t=2)",
+      "compare": "shape",
+      "node": {
+        "path": "node/crypto:crypto_008",
+        "lib": "argon2"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_008",
+        "lib": "argon2"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-009",
+      "category": "crypto",
+      "title": "bcrypt hash cost 10",
+      "compare": "shape",
+      "node": {
+        "path": "node/crypto:crypto_009",
+        "lib": "bcrypt"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_009",
+        "lib": "bcrypt"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "crypto-010",
+      "category": "crypto",
+      "title": "UUID v4 and v7 ×100k",
+      "compare": "shape",
+      "node": {
+        "path": "node/crypto:crypto_010",
+        "lib": "node:crypto+uuid"
+      },
+      "rust": {
+        "path": "rust/crypto:crypto_010",
+        "lib": "uuid"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-001",
+      "category": "media",
+      "title": "decode 4K PNG",
+      "compare": "exact",
+      "node": {
+        "path": "node/media:media_001",
+        "lib": "sharp"
+      },
+      "rust": {
+        "path": "rust/media:media_001",
+        "lib": "image"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-002",
+      "category": "media",
+      "title": "resize 4K JPEG → 1080p",
+      "compare": "approx",
+      "node": {
+        "path": "node/media:media_002",
+        "lib": "sharp"
+      },
+      "rust": {
+        "path": "rust/media:media_002",
+        "lib": "image + fast_image_resize"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-003",
+      "category": "media",
+      "title": "thumbnail 256 px",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_003",
+        "lib": "sharp"
+      },
+      "rust": {
+        "path": "rust/media:media_003",
+        "lib": "fast_image_resize"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-004",
+      "category": "media",
+      "title": "PNG → WebP",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_004",
+        "lib": "sharp"
+      },
+      "rust": {
+        "path": "rust/media:media_004",
+        "lib": "image-webp"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-005",
+      "category": "media",
+      "title": "Gaussian blur 1080p",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_005",
+        "lib": "sharp"
+      },
+      "rust": {
+        "path": "rust/media:media_005",
+        "lib": "libblur"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-006",
+      "category": "media",
+      "title": "QR code → PNG",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_006",
+        "lib": "qrcode"
+      },
+      "rust": {
+        "path": "rust/media:media_006",
+        "lib": "qrcode"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-007",
+      "category": "media",
+      "title": "SVG → PNG",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_007",
+        "lib": "@resvg/resvg-js"
+      },
+      "rust": {
+        "path": "rust/media:media_007",
+        "lib": "resvg"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-008",
+      "category": "media",
+      "title": "PDF text extraction",
+      "compare": "shape",
+      "node": {
+        "path": "node/media:media_008",
+        "lib": "pdf-parse"
+      },
+      "rust": {
+        "path": "rust/media:media_008",
+        "lib": "lopdf"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-009",
+      "category": "media",
+      "title": "read EXIF",
+      "compare": "exact",
+      "node": {
+        "path": "node/media:media_009",
+        "lib": "exifr"
+      },
+      "rust": {
+        "path": "rust/media:media_009",
+        "lib": "kamadak-exif"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "media-010",
+      "category": "media",
+      "title": "WAV resample 48k → 16k",
+      "compare": "approx",
+      "node": {
+        "path": "node/media:media_010",
+        "lib": "wave-resampler"
+      },
+      "rust": {
+        "path": "rust/media:media_010",
+        "lib": "rubato"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true,
+      "tolerance": 0.015,
+      "tolerance": 1e-09
+    },
+    {
+      "id": "net-001",
+      "category": "net",
+      "title": "GET 1 KB",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_001",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_001",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-002",
+      "category": "net",
+      "title": "GET 10 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_002",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_002",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-003",
+      "category": "net",
+      "title": "POST JSON 1 MB",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_003",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_003",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-004",
+      "category": "net",
+      "title": "20 GETs in parallel",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_004",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_004",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-005",
+      "category": "net",
+      "title": "20 GETs sequential",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_005",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_005",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-006",
+      "category": "net",
+      "title": "streamed body, hash while reading",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_006",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_006",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-007",
+      "category": "net",
+      "title": "fetch then storage.store",
+      "compare": "shape",
+      "node": {
+        "path": "node/net:net_007",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_007",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-008",
+      "category": "net",
+      "title": "fetch then runMutation",
+      "compare": "shape",
+      "node": {
+        "path": "node/net:net_008",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_008",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-009",
+      "category": "net",
+      "title": "timeout handling (server sleeps)",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_009",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_009",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "net-010",
+      "category": "net",
+      "title": "follow 5 redirects",
+      "compare": "exact",
+      "node": {
+        "path": "node/net:net_010",
+        "lib": "fetch"
+      },
+      "rust": {
+        "path": "rust/net:net_010",
+        "lib": "host fetch"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": false
+    },
+    {
+      "id": "mem-001",
+      "category": "mem",
+      "title": "allocate and touch 100 MB",
+      "compare": "ignore",
+      "node": {
+        "path": "node/mem:mem_001",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/mem:mem_001",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "mem-002",
+      "category": "mem",
+      "title": "1M small allocations",
+      "compare": "ignore",
+      "node": {
+        "path": "node/mem:mem_002",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/mem:mem_002",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "mem-003",
+      "category": "mem",
+      "title": "fan-out/join 100 async tasks",
+      "compare": "exact",
+      "node": {
+        "path": "node/mem:mem_003",
+        "lib": "Promise.all"
+      },
+      "rust": {
+        "path": "rust/mem:mem_003",
+        "lib": "join_all"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "mem-004",
+      "category": "mem",
+      "title": "hash map insert 1M",
+      "compare": "exact",
+      "node": {
+        "path": "node/mem:mem_004",
+        "lib": "Map"
+      },
+      "rust": {
+        "path": "rust/mem:mem_004",
+        "lib": "HashMap"
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    },
+    {
+      "id": "mem-005",
+      "category": "mem",
+      "title": "build a 10 MB string by concatenation",
+      "compare": "exact",
+      "node": {
+        "path": "node/mem:mem_005",
+        "lib": null
+      },
+      "rust": {
+        "path": "rust/mem:mem_005",
+        "lib": null
+      },
+      "args": {
+        "seed": 1
+      },
+      "phase0": true
+    }
+  ]
+}

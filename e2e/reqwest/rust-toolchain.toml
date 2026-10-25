@@ -1,0 +1,5 @@
+[toolchain]
+# Same pin as vendor/convex-backend (D-008), so one toolchain serves both.
+channel = "nightly-2026-06-28"
+targets = ["wasm32-wasip1"]
+components = ["rustfmt", "clippy"]

@@ -1,0 +1,21 @@
+[package]
+name = "spec_rust"
+edition = "2021"
+version = "0.1.0"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+convex_fn = { path = "../../../../crates/convex_fn", features = ["log", "tracing"] }
+log = "0.4"
+tracing = "0.1"
+getrandom02 = { package = "getrandom", version = "0.2" }
+getrandom03 = { package = "getrandom", version = "0.3" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+base64 = "0.22"
+
+# Standalone: not part of the convex-rs workspace.
+[workspace]

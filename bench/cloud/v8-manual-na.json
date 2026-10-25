@@ -1,0 +1,12 @@
+{
+ "data-001": "csv-parse needs the Node Buffer global at module load",
+ "data-002": "csv-stringify needs the Node Buffer global at module load",
+ "cpu-014": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "data-007": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "data-008": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "data-012": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "data-013": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "mem-001": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "mem-002": "exceeds the 64 MB default-runtime isolate memory limit (JavaScript execution ran out of memory)",
+ "data-010": "handlebars compiles templates with new Function(); code generation from strings is disallowed in the default runtime"
+}

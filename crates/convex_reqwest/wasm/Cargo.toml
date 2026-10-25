@@ -1,0 +1,36 @@
+# DX-06 wasm checks: an #[action] using reqwest plus real vendor-style crates that
+# depend on reqwest (oauth2 on the 0.12 line, reqwest-middleware on 0.13), all
+# compiled for wasm32-wasip1 against the shim through [patch.crates-io].
+# Standalone workspace. Build:
+#   CARGO_TARGET_DIR=<repo>/target-e2e \
+#     cargo build --offline --release --target wasm32-wasip1 -p reqwest_wasm_probe
+# Test:  cargo test --offline --release -p reqwest_wasm_harness
+[workspace]
+members = ["harness"]
+
+[package]
+name = "reqwest_wasm_probe"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+convex_fn = { path = "../../convex_fn" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+http = "1"
+tokio = { version = "1", default-features = false, features = ["rt", "time", "macros"] }
+# What a vendor crate typically writes:
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "stream", "multipart", "gzip", "blocking"] }
+reqwest13 = { package = "reqwest", version = "0.13", default-features = false, features = ["rustls", "json"] }
+oauth2 = { version = "5", default-features = false, features = ["reqwest", "rustls-tls"] }
+reqwest-middleware = { version = "0.5", default-features = false }
+async-trait = "0.1"
+futures-util = { version = "0.3", default-features = false }
+
+[patch.crates-io]
+reqwest = { path = ".." }
+reqwest13 = { path = "../v0_13", package = "reqwest" }

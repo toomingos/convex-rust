@@ -1,0 +1,22 @@
+[package]
+name = "convex_aws"
+edition.workspace = true
+license.workspace = true
+version.workspace = true
+description = "AWS SDK for Rust glue for \"use rust\" actions: smithy HttpClient over ctx.fetch, sleep impl, env config (DX-06c)"
+publish = false
+
+[dependencies]
+convex_fn = { workspace = true, features = ["tokio-rt"] }
+aws-smithy-runtime-api = { version = "1", features = ["client", "http-1x"] }
+aws-smithy-async = { version = "1", default-features = false }
+aws-smithy-types = { version = "1", default-features = false }
+aws-credential-types = { version = "1", default-features = false }
+aws-types = { version = "1", default-features = false }
+http = "1"
+tokio = { version = "1", default-features = false, features = ["rt", "time"] }
+
+[dev-dependencies]
+convex_fn_test.workspace = true
+aws-sdk-s3 = { version = "1", default-features = false, features = ["behavior-version-latest"] }
+tokio = { version = "1", default-features = false, features = ["rt", "time", "macros"] }
