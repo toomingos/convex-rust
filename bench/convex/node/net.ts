@@ -79,6 +79,7 @@ export async function net007(ctx: Ctx, a: Args): Promise<{ id: string; size: num
   const res = await fetch(`${base()}/bytes/65536?seed=${a.seed}`);
   const data = new Uint8Array(await res.arrayBuffer());
   const id = await ctx.storage.store(new Blob([data], { type: "application/octet-stream" }));
+  await ctx.storage.delete(id);
   return { id, size: data.length };
 }
 export const net_007 = seedAction(net007);

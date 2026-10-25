@@ -95,6 +95,8 @@ export const cb_011 = seedAction(cb011);
 export async function cb012(ctx: Ctx, a: Args): Promise<{ id: string; size: number }> {
   const data = payload(a.seed);
   const id = await ctx.storage.store(new Blob([data], { type: "application/octet-stream" }));
+  // Clean up so repeated runs don't fill file storage (the free plan has 1 GB).
+  await ctx.storage.delete(id);
   return { id, size: data.length };
 }
 export const cb_012 = seedAction(cb012);
@@ -109,6 +111,7 @@ export async function cb013(
   );
   const blob = await ctx.storage.get(id);
   if (blob === null) throw new Error("stored blob missing");
+  await ctx.storage.delete(id);
   const bytes = new Uint8Array(await blob.arrayBuffer());
   let sum = 0;
   for (let i = 0; i < bytes.length; i++) sum += bytes[i];

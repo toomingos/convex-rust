@@ -306,7 +306,12 @@ impl Inner {
     }
 
     fn put(&mut self, data: Vec<u8>, content_type: Option<String>) -> String {
-        let id = format!("kg2test{:08}", self.storage.len() + 1);
+        // Deletes shrink the map, so skip ids that are still taken.
+        let mut n = self.storage.len() + 1;
+        while self.storage.contains_key(&format!("kg2test{n:08}")) {
+            n += 1;
+        }
+        let id = format!("kg2test{n:08}");
         self.storage
             .insert(id.clone(), StoredFile { content_type, data });
         id
@@ -362,6 +367,11 @@ impl Inner {
                 }
             }
             "1.0/getUserIdentity" => Ok(self.identity.clone()),
+            "1.0/storageDelete" => {
+                let id = args["storageId"].as_str().unwrap_or_default();
+                self.storage.remove(id);
+                Ok(Value::Null)
+            }
             _ => Err(HostError::message(format!(
                 "convex_fn_test: no handler for syscall {name}"
             ))),

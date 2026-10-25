@@ -145,6 +145,8 @@ pub async fn cb_012(ctx: &Ctx, a: SeedArgs) -> Result<Stored> {
     let id = ctx
         .storage_store(&data, Some("application/octet-stream"))
         .await?;
+    // Clean up so repeated runs don't fill file storage (the free plan has 1 GB).
+    ctx.storage().delete(&id).await?;
     Ok(Stored {
         id,
         size: data.len(),
@@ -169,6 +171,7 @@ pub async fn cb_013(ctx: &Ctx, a: SeedArgs) -> Result<Fetched> {
         .storage_get(&id)
         .await?
         .ok_or_else(|| convex_fn::Error::msg("stored blob missing"))?;
+    ctx.storage().delete(&id).await?;
     Ok(Fetched {
         size: f.data.len(),
         sum: f.data.iter().map(|&b| u64::from(b)).sum(),

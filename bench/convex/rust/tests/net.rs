@@ -70,7 +70,7 @@ fn net_007_matches_node() {
     let out = call!(h, net_007, common::args("net-007"));
     common::check("net-007", &out);
     let id = out["ok"]["id"].as_str().unwrap();
-    assert_eq!(h.storage_read(id).unwrap(), Prng::new(1).bytes(65536));
+    assert!(h.storage_read(id).is_none(), "blob is deleted after the store");
 }
 
 #[test]

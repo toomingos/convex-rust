@@ -214,14 +214,14 @@ fn cb_011_matches_node() {
     }
 }
 
-// Node: storage.store(new Blob([1 MB])) -> {id, size}; compare=shape.
+// Node: storage.store(new Blob([1 MB])) -> {id, size}, then storage.delete; compare=shape.
 #[test]
 fn cb_012_matches_node() {
     let h = TestHost::new();
     let out = call!(h, cb_012, args("cb-012"));
     assert_eq!(out["ok"]["size"], 1 << 20);
     let id = out["ok"]["id"].as_str().unwrap();
-    assert_eq!(h.storage_read(id).unwrap(), payload(1));
+    assert!(h.storage_read(id).is_none(), "blob is deleted after the store");
 }
 
 // Node: store then storage.get -> {size, sum, contentType}.

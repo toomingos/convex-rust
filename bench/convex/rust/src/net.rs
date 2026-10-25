@@ -155,6 +155,7 @@ pub async fn net_007(ctx: &Ctx, args: SeedArgs) -> Result<Stored> {
     let id = ctx
         .storage_store(&res.body, Some("application/octet-stream"))
         .await?;
+    ctx.storage().delete(&id).await?;
     Ok(Stored {
         id,
         size: res.body.len(),
