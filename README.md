@@ -8,7 +8,7 @@ backend), with no backend or CLI changes. The wasm host uses WebAssembly JSPI to
 For self-hosters there are also optional in-backend runtimes (a wasmtime wasm runtime and an opt-in native
 worker mode) that need a fork of the Convex backend. They are not needed for the npm package.
 
-Status: **experimental, version 0.1.0.** The npm package `convex-rust` is published from
+Status: **experimental, version 0.1.1.** The npm package `convex-rust` is published from
 [packages/convex-rust](packages/convex-rust). Convex default-runtime limits apply (actions only, no
 `"use node"`); see [docs/rust/limits.md](docs/rust/limits.md).
 
