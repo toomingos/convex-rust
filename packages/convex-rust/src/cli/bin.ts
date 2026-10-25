@@ -160,8 +160,8 @@ async function main(argv: string[]): Promise<number> {
         [
           "",
           "Next:",
-          "  npx convex-rust build        # compiles the crate (first build downloads crates, ~1 min), writes the wasm + TS wrappers",
-          "  npx convex dev --once        # pushes it (or: npx convex deploy). Needs a configured project: run `npx convex dev` once first.",
+          "  npx convex-rust build        # compiles the crate, writes the wasm + TS wrappers (the first build downloads crates and can take a few minutes; later builds take seconds)",
+          "  npx convex dev --once        # pushes it (or: npx convex deploy). Needs a configured Convex project: run `npx convex dev` once (creates/links one), or set CONVEX_DEPLOY_KEY (CI).",
           `  npx convex run rust/example:greet '{"name":"you"}'`,
           "",
           `While editing Rust, run \`npx convex-rust dev\` next to \`npx convex dev\`. Commit ${rel}/Cargo.lock and ${rel}/src/_generated/api.rs.`,

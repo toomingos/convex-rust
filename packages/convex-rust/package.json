@@ -1,6 +1,6 @@
 {
   "name": "convex-rust",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "\"use rust\" for stock Convex: write Convex actions in Rust, compiled to wasm and hosted inside a normal Convex action (cloud or self-hosted).",
   "license": "Apache-2.0",
   "repository": {

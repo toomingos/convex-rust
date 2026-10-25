@@ -9,7 +9,8 @@ Spec: `contracts/V8HOST.md` (guest ABI: `contracts/ABI.md`, manifest: `contracts
 
 ## Quickstart
 
-In an existing Convex project (`npx convex dev` has been run once, so `convex/_generated` and a deployment exist),
+In an existing, configured Convex project (`npx convex dev` has been run once, which creates/links the deployment and
+`convex/_generated`; or, for CI / deploy-key users, `CONVEX_DEPLOY_KEY` is set in the environment),
 with [rustup](https://rustup.rs) installed:
 
 ```sh
@@ -27,7 +28,8 @@ comes from that file; if toolchain or target is missing `build` shows the exact 
 asks `Run ... now? (Y/n)` (never silently; with no TTY it just fails with the command).
 `npx convex-rust doctor` checks cargo, rustup, toolchain + target, the shipped `convex_fn` crate and `wasm-opt`.
 `wasm-opt` (binaryen, `brew install binaryen`) is optional: it makes release wasm about 30% smaller (`-O3`).
-Wasm SIMD is on by default (`--no-simd` to opt out). Instance reuse, `CONVEX_RUST_TRACE` and build flags: docs/rust/cloud.md.
+The first `build` downloads the crates (and, only if a dependency compiles C code, the ~180 MB wasi-sdk), so it can take a
+few minutes; later builds take seconds. Wasm SIMD is on by default (`--no-simd` to opt out). Instance reuse, `CONVEX_RUST_TRACE` and build flags: docs/rust/cloud.md.
 
 The scaffolded crate depends on `convex_fn` by path into `node_modules/convex-rust/rust/convex_fn` (shipped in this
 package; nothing is fetched from crates.io for it). Commit `convex/rust/Cargo.lock`, `src/_generated/api.rs` and
@@ -123,6 +125,14 @@ surfaces as `Uncaught Error: <panic message> at file:line`.
 - Fan-out: `ctx.run_action_each(target, args, limit)` / `convex_fn::par_map` run many actions in parallel with a concurrency limit (each is a separate billed action execution).
 
 See `docs/rust/cloud.md` for the full guide.
+
+## Troubleshooting
+
+- `ExperimentalWarning: localStorage is not available because --localstorage-file was not provided` on every `convex`
+  command comes from the stock `convex` CLI on newer Node (webstorage) and is harmless. Silence it with
+  `NODE_OPTIONS=--no-experimental-webstorage`.
+- npm 11 `install-scripts ... esbuild ... not yet covered by allowScripts` comes from `convex`'s own esbuild dependency and
+  is harmless (its postinstall is only an optimization). To silence it: `npm install-scripts approve esbuild`.
 
 ## Limitations
 

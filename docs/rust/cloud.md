@@ -12,7 +12,8 @@ Package reference: [packages/convex-rust/README.md](../../packages/convex-rust/R
 
 ## Getting started
 
-Prerequisites: a Convex project (`npx convex dev` has been run once, so `convex/_generated` exists), `rustup`
+Prerequisites: a configured Convex project (`npx convex dev` has been run once, so `convex/_generated` exists; or
+`CONVEX_DEPLOY_KEY` is set for CI), `rustup`
 (stable Rust is enough; the `wasm32-wasip1` target comes from the `rust-toolchain.toml` that init writes, and `build`
 offers to install a missing toolchain or target with the exact `rustup` command), and optionally `wasm-opt`
 (binaryen) for smaller modules. `npx convex-rust doctor` checks all of it.
